@@ -43,7 +43,12 @@ export function Home() {
   }
 
   function handleChangeInputText(text: string) {
-    setSearchText(text);
+    setSearchText((prev) => {
+      if (prev === "") {
+        setSearchListData(data);
+      }
+      return text;
+    });
   }
 
   useFocusEffect(
