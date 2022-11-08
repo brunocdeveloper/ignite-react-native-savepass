@@ -39,7 +39,10 @@ export function Home() {
   }
 
   function handleFilterLoginData() {
-    // Filter results inside data, save with setSearchListData
+    const filteredData = searchListData.filter(
+      (data) => data.service_name === searchText
+    );
+    setSearchListData(filteredData);
   }
 
   function handleChangeInputText(text: string) {
