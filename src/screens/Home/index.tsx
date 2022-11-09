@@ -39,19 +39,18 @@ export function Home() {
   }
 
   function handleFilterLoginData() {
-    const filteredData = searchListData.filter(
-      (data) => data.service_name === searchText
+    const filteredData = searchListData.filter((data) =>
+      data.service_name.toLowerCase().includes(searchText.toLowerCase())
     );
     setSearchListData(filteredData);
   }
 
   function handleChangeInputText(text: string) {
-    setSearchText((prev) => {
-      if (prev === "") {
-        setSearchListData(data);
-      }
-      return text;
-    });
+    if (!text) {
+      setSearchListData(data);
+    }
+
+    setSearchText(text);
   }
 
   useFocusEffect(
